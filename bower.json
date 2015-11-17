@@ -1,0 +1,27 @@
+{
+  "name": "chat",
+  "version": "0.0.0",
+  "authors": [
+    "jianqiao <tedqiao@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "mqttjs-browser": "mqtt-browser#~0.0.1",
+    "angular": "~1.4.7",
+    "bootstrap": "~3.3.5",
+    "angular-ui-router": "~0.2.15"
+  }
+}
