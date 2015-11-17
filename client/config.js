@@ -10,7 +10,7 @@ angular
   $stateProvider
     .state('chat', {
       url: "/chat",
-      templateUrl: "chat/chat.html",
+      templateUrl: "views/chat/chat.html",
       controller :"chatController",
       controllerAs:"cc"
     });

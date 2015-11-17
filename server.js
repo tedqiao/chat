@@ -53,7 +53,7 @@ broker.on('clientDisconnected', function(client) {
 
 
 app.use(express.static(path.dirname(require.resolve("mosca")) + "/public"));
-app.use(express.static(__dirname + '/views'));
+
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/'));
 
