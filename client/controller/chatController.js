@@ -3,7 +3,7 @@ angular.module('myapp').controller("chatController",function($scope,chatFactory)
         //console.log(chatFactory.options)
         var options=chatFactory.options;
         var host=chatFactory.host;
-        var client=mqtt.connect(host,options)
+        var client=mqtt.connect(host,options);
             client.subscribe("topic", { qos: 0 });
             client.on('message', function (topic, message) {
               // message is Buffer
