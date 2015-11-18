@@ -18,9 +18,9 @@ angular.module('myapp').controller("chatController",function($scope,$compile,cha
               
               var MSG=JSON.parse(message)
               if(MSG.Id!==$scope.client_id)
-              appendReceviedMsg(MSG.Msg)
+              appendReceviedMsg(MSG.Msg,MSG.Id)
               console.log("topic:"+topic);
-              console.log($scope.client_id,MSG.Id);
+              console.log(MSG.Msg,MSG.Id);
             });
         
     };
@@ -29,19 +29,19 @@ angular.module('myapp').controller("chatController",function($scope,$compile,cha
     var send = function(){
         console.log($scope.message);
         $scope.client.publish('topic',JSON.stringify({Id:$scope.client_id,Msg:$scope.message}),function(){
-            console.log('this is cb');
-            appendSentMsg($scope.message);
+            console.log($scope.message);
+            appendSentMsg($scope.message,$scope.client_id);
             $scope.message="";
         });
     };
     
     
     var appendSentMsg = function(message){
-        $('.panel-body').append($compile('<div sender-msg message='+message+'></div>')($scope));
+        $('.panel-body').append($compile("<div sender-msg message='"+message+"' Id='"+ $scope.client_id+"'></div>")($scope));
                 };
     
-    var appendReceviedMsg = function(message){
-         $('.panel-body').append($compile('<div recevier-msg message='+message+'></div>')($scope));
+    var appendReceviedMsg = function(message,id){
+         $('.panel-body').append($compile("<div recevier-msg message='"+message+"' Id='"+id+"'></div>")($scope));
                 };
     
     $scope.send=send;

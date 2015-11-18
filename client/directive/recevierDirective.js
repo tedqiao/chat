@@ -3,7 +3,8 @@ angular.module('myapp').directive('recevierMsg',function(){
 		restrict: 'AE',
 		templateUrl : 'views/chat/recevierMsg.html',
 	    scope:{
-	    	message:'@message'
+	    	message:'@message',
+            Id:'@id'
 	    },
 		link: function (scope, iElement, iAttrs) {
 			
