@@ -6,7 +6,7 @@ angular.module('myapp').directive('recevierMsg',function(){
 	    	message:'@message'
 	    },
 		link: function (scope, iElement, iAttrs) {
-			//scope.message=message;
+			
 		}
     }  
 });

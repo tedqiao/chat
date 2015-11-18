@@ -38,13 +38,11 @@ angular.module('myapp').controller("chatController",function($scope,$compile,cha
     
     var appendSentMsg = function(message){
         $('.panel-body').append($compile('<div sender-msg message='+message+'></div>')($scope));
-         
-        
-    };
+                };
     
     var appendReceviedMsg = function(message){
          $('.panel-body').append($compile('<div recevier-msg message='+message+'></div>')($scope));
-    };
+                };
     
     $scope.send=send;
     $scope.connect=connect;
