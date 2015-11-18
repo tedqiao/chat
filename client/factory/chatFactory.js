@@ -1,5 +1,5 @@
 angular.module('myapp').factory("chatFactory", function () {
-    var client_id='Peego';
+    var client_id='';
     
     var host='ws://localhost:1884';
     
