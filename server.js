@@ -6,11 +6,21 @@ var srv = http.createServer(app);
 var path = require("path");
 
 var broker = new mosca.Server({
-  http: {
-    port: 1884,
-    bundle: true,
-    static: './'
-  }
+    backend:{
+                type: 'mongo',
+                url: 'mongodb://localhost:27017/mqtt',
+                pubsubCollection: 'ascoltatori',
+                mongo: {}
+              },
+    persistence:{
+                factory: mosca.persistence.Mongo,
+                url: "mongodb://localhost:27017/mosca"
+              },
+    http: {
+            port: 1884,
+            bundle: true,
+            static: './'
+          }
 });
 
 

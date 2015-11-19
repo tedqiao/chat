@@ -4,11 +4,11 @@ angular.module('myapp').factory("chatFactory", function () {
     var host='ws://localhost:1884';
     
     var options = {
-                    keepalive: 10,
+                    keepalive: 900,
                     clientId: client_id,
                     protocolId: 'MQTT',
                     protocolVersion: 4,
-                    clean: true,
+                    clean: false,
                     reconnectPeriod: 1000,
                     connectTimeout: 30 * 1000,
                     will: {
@@ -17,8 +17,6 @@ angular.module('myapp').factory("chatFactory", function () {
                         qos: 0,
                         retain: false
                     },
-                    username: 'demo',
-                    password: 'demo',
                     rejectUnauthorized: false
                 };
 
