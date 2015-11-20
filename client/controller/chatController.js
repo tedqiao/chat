@@ -46,10 +46,11 @@ angular.module('myapp').controller("chatController",function($scope,$compile,cha
     //publish a message
     var send = function(){
 //        console.log($scope.message);
-            $scope.client.publish('topic',JSON.stringify({Id:$scope.client_id,
-                                                          Msg:$scope.message}),
-                                                         {qos:1,retain:true},
-                                                         function(){
+       $scope.client.publish('topic',
+                             JSON.stringify({Id:$scope.client_id,
+                                             Msg:$scope.message}),
+                                            {qos:1,retain:true},
+                                            function(){
 //                console.log($scope.message);
                 appendSentMsg($scope.message,$scope.client_id);
                 $scope.message="";
