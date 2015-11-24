@@ -1,7 +1,10 @@
 angular.module('myapp').factory("chatFactory", function () {
     var client_id='';
+    var friends_list=['Jhon','Flash','Hawken'];
+    var groups_list=[];
     
     var host='ws://localhost:1884';
+    
     
     var options = {
                     keepalive: 900,
@@ -22,6 +25,8 @@ angular.module('myapp').factory("chatFactory", function () {
 
     return {
             host:host,
-            options:options
+            options:options,
+            friends_list:friends_list,
+            groups_list:groups_list
             };
     });

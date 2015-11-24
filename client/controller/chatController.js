@@ -3,6 +3,10 @@ angular.module('myapp').controller("chatController",function($scope,$compile,cha
     $scope.topic = "";
     $scope.message = "";
     $scope.client = "";
+    $scope.friends_list = chatFactory.friends_list;
+    $scope.groups_list = chatFactory.groups_list;
+    
+    
      var connect = function(){
         //console.log(chatFactory.options)
         if( $scope.client_id === "")
@@ -19,7 +23,7 @@ angular.module('myapp').controller("chatController",function($scope,$compile,cha
                 console.log('connected');
                 
               //subscribe a topic
-              $scope.client.subscribe('topic',{qos:1},function(err, granted){
+              $scope.client.subscribe('topic/'+$scope.client_id,{qos:1},function(err, granted){
                     if(err){
                       console.log('subscribe failed');  
                     }else{
@@ -32,7 +36,7 @@ angular.module('myapp').controller("chatController",function($scope,$compile,cha
               // message is Buffer
               
               var packet=JSON.parse(message)
-              if(packet.Id!==$scope.client_id)
+              if(packet.Id !== $scope.client_id)
               appendReceviedMsg(packet.Msg,packet.Id)
 //              console.log("topic:"+topic);
 //              console.log(packet.Msg,packet.Id);
@@ -46,7 +50,7 @@ angular.module('myapp').controller("chatController",function($scope,$compile,cha
     //publish a message
     var send = function(){
 //        console.log($scope.message);
-       $scope.client.publish('topic',
+       $scope.client.publish( $scope.topic,
                              JSON.stringify({Id:$scope.client_id,
                                              Msg:$scope.message}),
                                             {qos:1,retain:true},
@@ -64,7 +68,13 @@ angular.module('myapp').controller("chatController",function($scope,$compile,cha
     var appendReceviedMsg = function(message,id){
          $('.panel-body').append($compile("<div recevier-msg message='"+message+"' Id='"+id+"'></div>")($scope));
                 };
- 
+    
+    
+    var changeTopic=function(topic){
+            $scope.topic='topic/'+topic;
+        };
+    
+    $scope.changeTopic=changeTopic;
     $scope.send=send;
     $scope.connect=connect;
         
